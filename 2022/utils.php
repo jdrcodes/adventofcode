@@ -22,3 +22,21 @@ function getFileFromData($fileName): array
 
     return $data;
 }
+
+function getPlaysFromFile($fileName): array
+{
+    $data = [];
+
+    if (!empty($fileName)) {
+        $file = fopen($fileName, 'r');
+
+        while ($line = fgets($file)) {
+            $line = trim($line);
+            $data[] = explode(" ", $line);
+        }
+
+        fclose($file);
+    }
+
+    return $data;
+}
